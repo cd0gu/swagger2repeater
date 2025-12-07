@@ -1,12 +1,12 @@
 # Swagger2Repeater
 
-Swagger2Repeater is a Burp Suite extension written in Jython that loads a **Swagger 2.0 (OpenAPI 2.0)** JSON specification, generates HTTP requests for each operation, and sends them directly to Burp Repeater.
+Swagger2Repeater is a Burp Suite extension written in Jython that loads a **Swagger 2.0** JSON specification, generates HTTP requests for each operation, and sends them directly to Burp Repeater.
 
 ---
 
 ## Features
 
-- Supports **Swagger 2.0 JSON** only
+- Supports **Swagger 2.0 JSON**
 - Load Swagger spec from URL or local file
 - Generate REST requests automatically:
   - Path parameters
