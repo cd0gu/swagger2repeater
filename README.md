@@ -1,51 +1,69 @@
 # Swagger2Repeater
 
-Swagger2Repeater is a Jython-based Burp Suite extension that loads a Swagger/OpenAPI JSON specification, generates HTTP requests for each operation, and sends them directly to Burp's Repeater.
+Swagger2Repeater is a Burp Suite extension written in Jython that automatically converts Swagger/OpenAPI JSON documents into HTTP requests and sends them directly to Burp's Repeater tab.
 
-## Features
+It is designed for penetration testers who want to quickly generate and test API endpoints without manually crafting each request.
 
-- Load Swagger 2.0 or OpenAPI 3.x JSON from:
-  - A URL (e.g., `https://api.example.com/swagger.json`)
-  - A local file path
-- Parse basic API metadata:
-  - Host, scheme (http/https), base path / servers
-- Generate HTTP requests for each path + method:
-  - Fills path parameters (e.g., `/users/{id}` → `/users/1`)
-  - Generates simple query/header/cookie parameters
-  - Builds JSON request bodies from request schemas (best-effort)
-- UI options:
-  - Select HTTP methods to include (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)
-  - Add one or more custom headers (e.g., `Authorization: Bearer <token>`)
-- Sends selected requests directly to Burp Repeater
-- Ensures proper CRLF separation between headers and body
+---
 
-## Files
+## 🚀 Features
 
-- `Swagger2Repeater.py` — Burp extension (Jython). Load this file as a Python extension in Burp.
-- `examples/` — small example Swagger JSON for quick testing.
-- `docs/INSTALL.md` — installation instructions for Burp Suite + Jython.
+- Parse **Swagger 2.0** and **OpenAPI 3.x** JSON documents
+- Generate HTTP requests automatically
+- Easily send requests to Burp Repeater
+- Add custom headers (e.g., Authorization tokens)
+- Supports file paths and URLs
+- Skips deprecated operations
+- Simple and fast interface
 
-## Installation (local)
+---
 
-1. Download a Jython standalone JAR (e.g., `jython-standalone-2.7.3.jar`) and note its path.
-2. Clone this repository or copy `Swagger2Repeater.py` somewhere local.
-3. Open **Burp Suite** → **Extender** → **Options** → **Python Environment** → point to the Jython standalone JAR.
-4. Go to **Extender** → **Extensions** → **Add**:
-   - **Extension type**: `Python`
-   - **Extension file**: `Swagger2Repeater.py`
-5. A new tab named **Swagger2Repeater** should appear in Burp.
+## 📦 Installation
 
-For more details, see `docs/INSTALL.md`.
+See: `docs/INSTALL.md`
 
-## Usage
+---
 
-1. Open the **Swagger2Repeater** tab in Burp.
-2. Click in **Swagger Source (file path or URL)** and provide either:
-   - A URL to a Swagger/OpenAPI JSON file, or
-   - A full path to a local JSON file.
-3. Select which HTTP methods you want to generate requests for.
-4. (Optional) Enter one or more custom headers, for example:
+## 🧰 Usage Overview
 
-   ```text
-   Authorization: Bearer <token>
-   X-API-Key: 12345
+1. Open the **Swagger2Repeater** tab in Burp Suite.  
+2. Enter a Swagger/OpenAPI URL or file path.  
+3. Select HTTP methods to generate.  
+4. Optionally add custom headers.  
+5. Load and review generated requests.  
+6. Send selected requests to Burp Repeater.
+
+---
+
+## 📁 Examples
+
+Example Swagger files are located in:
+
+- examples/swagger2-simple.json
+- examples/openapi3-simple.json
+
+---
+
+## ⚠ Limitations
+
+- Only JSON Swagger/OpenAPI is supported (YAML not supported)
+- Request bodies generated using best-effort placeholder data
+- No automatic processing of security schemes
+- Complex schemas may produce simplified payloads
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!  
+Before submitting changes:
+
+1. Follow Jython-compatible style  
+2. Ensure Burp loads the extension without errors  
+3. Add/update example files when necessary  
+
+---
+
+## 📜 License
+
+This project is licensed under the terms of the MIT license.
